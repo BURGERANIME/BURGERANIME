@@ -8,11 +8,10 @@ export default function RootLayout({
   }>) {
     return (
       <html lang="en">
-        <body  >
-          
+        <body  className=" bg-gradient-to-b  from-black/40 via-black/0 to-transparent">
+          <Header />
             {children}
-       
-
+          <Footer />
         </body>
       </html>
     );

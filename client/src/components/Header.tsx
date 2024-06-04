@@ -6,7 +6,7 @@ import Register from "./Register";
 
 export default function Header() {
 return (
-   <header className=" fixed flex w-full h-24 items-center justify-around  z-[1000]" style={{ borderBottom: "1px solid #ffffff33"}}>
+   <header className=" fixed flex w-full h-24 items-center justify-around z-[1000]" style={{ borderBottom: "1px solid #ffffff33"}}>
       <div className="flex items-center space-x-10"> 
          <figure className="flex space-x-4 items-center">
             <BurgerMenu />

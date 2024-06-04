@@ -1,14 +1,8 @@
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion"
 
 export default function Catalog() {
   return (
     <main className="p-10">
-        <div className="flex justify-between" >
+        <div className="flex justify-between mt-32" >
           <h1>Catalog</h1>
           <p>Sort By</p>
         </div>
@@ -18,11 +12,8 @@ export default function Catalog() {
           </div>
           <div className=" w-full">
             anime here
-
           </div>
-
         </div>
-
     </main>
   )
   
