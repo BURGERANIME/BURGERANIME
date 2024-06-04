@@ -2,3 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+
+::selection {
+   background-color: #222;
+   color: orange;
+}
+
+/* fix */
+
+
+::-webkit-scrollbar {
+   width: 2px;
+ }
+ ::-webkit-scrollbar-track {
+   background: transparent;
+   
+ }
+ ::-webkit-scrollbar-thumb {
+   background: white;
+   
+  }
