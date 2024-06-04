@@ -7,18 +7,19 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    /* Screens Configuration By BURGERANIME */
     screens: {
       'sm': '400px',
-      // => @media (min-width: 640px) { ... }
+      // => @media (min-width: 400px) { ... }
 
       'md': '1168px',
-      // => @media (min-width: 768px) { ... }
+      // => @media (min-width: 1168px) { ... }
 
       'lg': '1224px',
-      // => @media (min-width: 1024px) { ... }
+      // => @media (min-width: 1224px) { ... }
 
       'xl': '1380px',
-      // => @media (min-width: 1280px) { ... }
+      // => @media (min-width: 1380px) { ... }
 
       '2xl': '1536px',
       // => @media (min-width: 1536px) { ... }

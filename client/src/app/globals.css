@@ -3,8 +3,12 @@
 @tailwind utilities;
 
 
+:root {
+  background-color: #222;
+}
+
 ::selection {
-   background-color: #222;
+   background-color: #22222262;
    color: orange;
 }
 
