@@ -1,11 +1,13 @@
 import Image from "next/image";
 import BurgerMenu from "./BurgerMenu";
+import Link from "next/link";
+import { BiBorderAll } from "react-icons/bi";
 import Register from "./Register";
 
 export default function Header() {
 return (
-   <header className=" fixed flex w-full h-28 items-center justify-around  bg-[#33333373] z-[1000]">
-      <div className="flex items-center space-x-10">
+   <header className=" fixed flex w-full h-24 items-center justify-around  z-[1000]" style={{ borderBottom: "1px solid #ffffff33"}}>
+      <div className="flex items-center space-x-10"> 
          <figure className="flex space-x-4 items-center">
             <BurgerMenu />
             {
@@ -36,8 +38,8 @@ return (
          }
 
          <ul className=" hidden md:flex space-x-4 text-lg text-[#ffffff8c]   ">
-            <li className="text-white font-extrabold cursor-pointer duration-15 ">Home</li>
-            <li className=" hover:text-white hover:font-extrabold cursor-pointer duration-150 ">Catalog</li>
+            <li className="text-white font-extrabold cursor-pointer duration-15 "><Link href="/">Home</Link></li>
+            <li className=" hover:text-white hover:font-extrabold cursor-pointer duration-150 "><Link href="/catalog">Catalog</Link></li>
             <li className=" hover:text-white hover:font-extrabold cursor-pointer duration-150 ">News</li>
             <li className=" hover:text-white hover:font-extrabold cursor-pointer duration-150 ">Collection</li>
          </ul>
