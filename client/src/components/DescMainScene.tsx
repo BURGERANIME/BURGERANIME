@@ -10,7 +10,7 @@ export default function DescMainScene() {
             width={500}
             height={500}
          />
-         <p className=" text-white text-3xl font-[cursive] font-bold w-[80%] md:w-[40%] ml-5 ">
+         <p className=" text-white text-4xl 2xl:text-6xl font-[cursive] font-bold w-[80%] md:w-[60%] ml-5 ">
          The life of a young glassblower in training and his relationships over the years, as his land goes through war and strife.
          </p>
          <div className=" flex items-center space-x-4 mt-10 ml-5 ">

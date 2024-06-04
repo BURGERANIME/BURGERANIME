@@ -1,5 +1,6 @@
 import Image from "next/image";
 import BurgerMenu from "./BurgerMenu";
+import Register from "./Register";
 
 export default function Header() {
 return (
@@ -78,12 +79,7 @@ return (
             />
          </label>
       </div>
-      <div className="space-x-4 hidden md:block ">
-         <button className="btn w-24 bg-[#333] text-white border-none hover:bg-white hover:text-black">Log In</button>
-         <button className="btn bg-orange-500 text-white border-none hover:bg-white hover:text-black">
-            Get started
-         </button>
-      </div>
+      <Register />
    </header>
 );
 }
