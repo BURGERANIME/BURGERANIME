@@ -1,17 +1,23 @@
 import Image from "next/image";
+import BurgerMenu from "./BurgerMenu";
 
 export default function Header() {
 return (
    <header className=" fixed flex w-full h-28 items-center justify-around  bg-[#33333373] z-[1000]">
       <div className="flex items-center space-x-10">
          <figure className="flex space-x-4 items-center">
-            <Image
+            <BurgerMenu />
+            {
+               /* 
+               <Image
                src="/assets/logos/logo.png"
                alt="logo"
                width={50}
                height={50}
                className="btn w-full h-full bg-transparent border-none hover:bg-transparent"
             />
+            */
+            }
            
          </figure>
          
