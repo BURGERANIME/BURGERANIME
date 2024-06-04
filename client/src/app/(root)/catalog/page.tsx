@@ -1,16 +1,54 @@
+"use client"
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import { Checkbox } from "@/components/ui/checkbox";
 import AnimeCard from "@/components/AnimeCard";
+import { Button } from "@/components/ui/button";
+
+interface Anime {
+  mal_id: number;
+  title: string;
+  year: number;
+  genres: { name: string }[];
+  images: { jpg: { image_url: string } };
+  score: number;
+  trailer: { url: string };
+}
 
 export default function Catalog() {
+  const [animeList, setAnimeList] = useState<Anime[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
+
+  const fetchAnime = async (page: number) => {
+    try {
+      const response = await axios.get(`https://api.jikan.moe/v4/anime?page=${page}`);
+      const newAnimeList = response.data.data;
+      setAnimeList(prevList => [...prevList, ...newAnimeList]);
+      setHasMore(newAnimeList.length > 0);
+      setLoading(false);
+    } catch (error) {
+      console.error('Error fetching anime data:', error);
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchAnime(page);
+  }, [page]);
+
+  const loadMore = () => {
+    setPage(prevPage => prevPage + 1);
+  };
   return (
-    <main className="p-10 min-h-screen">
+    <div className="p-10 min-h-screen">
       <div className="flex justify-between mt-32 pb-8">
         <h1 className="text-2xl text-white">Catalog</h1>
         <div className="flex items-center space-x-4">
@@ -229,19 +267,31 @@ export default function Catalog() {
         </div>
         <div className=" w-full">
           {/* anime content here 🤷‍♂️ */}
-          <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5 ">
-            <AnimeCard 
-             title="Anime Title"
-             imageUrl="https://cdn.myanimelist.net/images/anime/10/47347.jpg"
-             year={2021}
-             category="Action, Adventure, Fantasy"
-             rating={8.5}
-             trailerUrl="/assets/videos/mainscene.mp4"
-             />
-    
+          <div className="catalog-container grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-6 ">
+            {animeList.map(anime => (
+              <AnimeCard
+                key={anime.mal_id}
+                title={anime.title}
+                year={anime.year }
+                category={anime.genres.map(genre => genre.name).join(', ')}
+                imageUrl={anime.images.jpg.image_url}
+                rating={anime.score}
+                trailerUrl={anime.trailer.url}
+              />
+            ))}
+      
+          </div>
+          {loading && <div>Loading...</div>}
+                  {!loading && hasMore && (
+                    <div className="flex justify-center mt-6">
+                      <Button onClick={loadMore} className=" w-full ">
+                        Show More
+                      </Button>
+                    </div>
+                  )}
           </div>
         </div>
       </div>
-    </main>
+
   );
 }
