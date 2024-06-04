@@ -1,12 +1,27 @@
+"use client"
 import Image from "next/image";
 import BurgerMenu from "./BurgerMenu";
 import Link from "next/link";
 import { BiBorderAll } from "react-icons/bi";
 import Register from "./Register";
+import { useEffect, useState } from "react";
 
 export default function Header() {
+   const [isScrolled, setIsScrolled] = useState(false);
+
+   const handleScroll = () => {
+     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+     setIsScrolled(scrollTop > 0);
+   };
+ 
+   useEffect(() => {
+     window.addEventListener('scroll', handleScroll);
+     return () => {
+       window.removeEventListener('scroll', handleScroll);
+     };
+   }, []);
 return (
-   <header className=" fixed flex w-full h-24 items-center justify-around z-[1000]" style={{ borderBottom: "1px solid #ffffff33"}}>
+   <header className={`fixed flex w-full h-24 items-center justify-around z-50 transition-colors duration-300 ${isScrolled ? ' bg-black' : 'bg-transparent'}`}style={{ borderBottom: "1px solid #ffffff33"}}>
       <div className="flex items-center space-x-10"> 
          <figure className="flex space-x-4 items-center">
             <BurgerMenu />

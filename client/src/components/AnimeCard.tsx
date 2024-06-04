@@ -40,7 +40,7 @@ const AnimeCard: React.FC<AnimeCardProps> = ({ title, year, category, imageUrl, 
         <div className="absolute bottom-0 w-full p-4">
           <h3 className=" text-base font-semibold text-white">{title}</h3>
           <div className="flex justify-between mt-2 text-xs text-gray">
-            <span className="px-2">{year}</span>
+            <span className="px-2">{year || "N/A"}</span>
             <span className="px-2">{category}</span>
           </div>
         </div>
