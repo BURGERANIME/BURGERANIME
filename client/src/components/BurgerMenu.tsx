@@ -11,6 +11,11 @@ export default function BurgerMenu() {
       if (event.key === 'Escape') {
         setIsOpen(false);
       }
+
+      if (event.key === 'Tab') {
+        setIsOpen(true);
+      }
+
     };
 
     document.addEventListener('keydown', handleKeyDown);
