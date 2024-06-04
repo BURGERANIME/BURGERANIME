@@ -1,3 +1,4 @@
+import DescMainScene from "@/components/DescMainScene";
 import Header from "@/components/Header";
 import MainScene from "@/components/MainScene";
 
@@ -7,6 +8,7 @@ export default function Home() {
     <main>
             <Header />
             <MainScene />
+            <DescMainScene />
     </main>
   );
 }

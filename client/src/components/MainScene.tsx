@@ -1,6 +1,6 @@
 export default function MainScene() {
   return (
-    <div className="absolute w-full h-full">
+    <div className="absolute w-full h-full z-[-10]">
       {/* Background Video */}
       <video
         className="absolute top-0 left-0 w-full h-full object-cover z-[-2]"
