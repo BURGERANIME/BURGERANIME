@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function DescMainScene() {
   return (
-    <section className=" w-full pt-32 md:pt-52 pl-20 ">
+    <section className=" w-full pt-32 md:pt-52 pl-20 min-h-screen ">
       <figure>
          <Image
             src="/assets/images/animes_titles/The_Glassworker.png"
