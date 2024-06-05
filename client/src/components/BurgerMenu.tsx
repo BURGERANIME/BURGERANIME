@@ -12,7 +12,7 @@ export default function BurgerMenu() {
         setIsOpen(false);
       }
 
-      if (event.key === 'Tab') {
+      if (event.key === '²') {
         setIsOpen(true);
       }
 
