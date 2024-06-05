@@ -18,7 +18,7 @@ interface Anime {
   genres: { name: string }[];
   images: { jpg: { image_url: string } };
   score: number;
-  trailer: { url: string };
+  trailer: { youtube_id: string };
 }
 
 export default function Catalog() {
@@ -276,7 +276,8 @@ export default function Catalog() {
                 category={anime.genres.map(genre => genre.name).join(', ')}
                 imageUrl={anime.images.jpg.image_url}
                 rating={anime.score}
-                trailerUrl={anime.trailer.url}
+                trailerId={anime.trailer.youtube_id}
+               
               />
             ))}
       

@@ -1,6 +1,7 @@
-"use client"
+"use client";
 import React, { useState } from 'react';
 import { SlLike, SlDislike, SlStar, SlControlPlay } from "react-icons/sl";
+import Link from 'next/link';
 
 interface AnimeCardProps {
   title: string;
@@ -8,10 +9,10 @@ interface AnimeCardProps {
   category: string;
   imageUrl: string;
   rating: number;
-  trailerUrl: string;
+  trailerId: string; // Changed to trailerId
 }
 
-const AnimeCard: React.FC<AnimeCardProps> = ({ title, year, category, imageUrl, rating, trailerUrl }) => {
+const AnimeCard: React.FC<AnimeCardProps> = ({ title, year, category, imageUrl, rating, trailerId }) => {
   const [hovered, setHovered] = useState(false);
 
   return (
@@ -24,14 +25,18 @@ const AnimeCard: React.FC<AnimeCardProps> = ({ title, year, category, imageUrl, 
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: `url(${imageUrl})` }}
       />
-      {hovered && (
-        <video 
-          className="absolute inset-0 w-full h-full object-cover"
-          src={trailerUrl}
-          autoPlay
-          loop
-          muted
-        />
+   
+      {hovered && trailerId && (
+        <div className="absolute inset-0 w-full h-full overflow-hidden">
+          <iframe
+            className="absolute top-0 left-0 w-full h-full"
+            src={`https://www.youtube.com/embed/${trailerId}?autoplay=1&mute=0&loop=1&playlist=${trailerId}&controls=0&modestbranding=1`}
+            frameBorder="0"
+            allow="autoplay; encrypted-media"
+            allowFullScreen
+            style={{ width: '200%', height: '100%', left: '-50%' }}
+          ></iframe>
+        </div>
       )}
 
       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/0 to-transparent"></div>
@@ -53,9 +58,11 @@ const AnimeCard: React.FC<AnimeCardProps> = ({ title, year, category, imageUrl, 
             <span className="text-lg text-white">{rating}</span>
           </div>
           <div className="absolute bottom-0 left-0 w-full p-4 flex justify-around items-center">
+            <Link href={`/catalog/${title}`}>
             <button className="flex items-center justify-center p-4 bg-black bg-opacity-70 rounded-full text-white hover:bg-blue-600 transition duration-300">
-              <SlControlPlay />
-            </button>
+                <SlControlPlay />
+              </button>
+            </Link>
             <button className="flex items-center justify-center p-4 bg-black bg-opacity-70 rounded-full text-white hover:bg-green-600 transition duration-300">
               <SlLike />
             </button>
