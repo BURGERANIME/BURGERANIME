@@ -5,13 +5,15 @@ import "@/assets/css/Register.css";
 export default function Register() {
    const [RejisOpen, setRejIsOpen] = useState(false);
    const [SigninisOpen, setSigninIsOpen] = useState(false);
+
+
   return (
     <>
 
       {/* Buttons in Header  */}
       <div className="space-x-4 hidden md:block ">
-         <button className="btn w-24 bg-[#333] text-white border-none hover:bg-white hover:text-black" onClick={ () => setSigninIsOpen(!SigninisOpen) } >Log In</button>
-         <button className="btn bg-orange-500 text-white border-none hover:bg-white hover:text-black" onClick={() => setRejIsOpen(!RejisOpen)}>
+         <button className="btn w-24 bg-[#333] text-white border-none hover:bg-white hover:text-black" onClick={ () => { setSigninIsOpen(!SigninisOpen); setRejIsOpen(false);} } >Log In</button>
+         <button className="btn bg-orange-500 text-white border-none hover:bg-white hover:text-black" onClick={() => {setRejIsOpen(!RejisOpen); setSigninIsOpen(false);}}>
             Get started
          </button>
       </div>
