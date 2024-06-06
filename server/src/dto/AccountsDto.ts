@@ -1,7 +1,6 @@
 
 
-export class AccountDto {
-   id: string;
+export class CreateAccountDto {
    username: string;
    email: string;
    password: string;
