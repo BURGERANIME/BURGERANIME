@@ -17,7 +17,7 @@ const AnimeCard: React.FC<AnimeCardProps> = ({ title, year, category, imageUrl, 
 
   return (
     <div
-      className={`m-auto relative w-52 h-80 rounded-2xl overflow-hidden bg-cover bg-center transition-all duration-300 ${hovered ? 'shadow-lg' : ''}`}  
+      className={` relative w-52 h-80 rounded-2xl overflow-hidden bg-cover bg-center transition-all duration-300 ${hovered ? 'shadow-lg' : ''}`}  
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >

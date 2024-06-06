@@ -19,7 +19,7 @@ export default function Header() {
      };
    }, []);
 return (
-   <header className={`fixed flex w-full h-24 items-center justify-around z-50 transition-colors duration-300 ${isScrolled ? ' bg-[#222]' : 'bg-[#22222246]'}`}>
+   <header className={`fixed flex w-full h-24 items-center justify-around z-50 transition-colors duration-300 ${isScrolled ? ' bg-[#222]' :  'bg-transparent' }`}>
       <div className="flex items-center space-x-10"> 
          <figure className="flex space-x-4 items-center">
             <BurgerMenu />
@@ -51,10 +51,10 @@ return (
          }
 
          <ul className=" hidden md:flex space-x-4 text-lg text-[#ffffff8c]   ">
-            <li className="text-white font-extrabold cursor-pointer duration-15 "><Link href="/">Home</Link></li>
-            <li className=" hover:text-white hover:font-extrabold cursor-pointer duration-150 "><Link href="/catalog">Catalog</Link></li>
-            <li className=" hover:text-white hover:font-extrabold cursor-pointer duration-150 ">News</li>
-            <li className=" hover:text-white hover:font-extrabold cursor-pointer duration-150 ">Collection</li>
+            <li className="text-white font-bold cursor-pointer  duration-300"><Link href="/">Home</Link></li>
+            <li className=" hover:text-white hover:font-bold cursor-pointer duration-150 "><Link href="/catalog">Catalog</Link></li>
+            <li className=" hover:text-white hover:font-bold cursor-pointer duration-150 "><Link href="/news">News</Link></li>
+            <li className=" hover:text-white hover:font-bold cursor-pointer duration-150 "><Link href="/collection">Collection</Link></li>
          </ul>
       
       </div>

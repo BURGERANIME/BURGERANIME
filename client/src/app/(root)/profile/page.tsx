@@ -15,10 +15,10 @@ import { MdOutlineRemoveRedEye, MdBookmarkBorder,MdDone ,MdOutlineFolder   } fro
 function Profile() {
   return (
     <div className='min-h-screen'>
-      <div className='h-96 relative'>
-        <Image src='/assets/images/cover.jpg' layout='fill' objectFit='cover' alt='Background Image' className='absolute inset-0 w-full h-full' />
+      <div className=' h-72 relative'>
+        <Image src='/assets/images/cover.jpg' width={900} height={500}  alt='Background Image' className='absolute inset-0 w-full h-full' />
         <div className='absolute inset-0 flex gap-4 items-center justify-start ml-36 z-10 mt-32'>
-        <Avatar className='mb-4 w-20 h-20'>
+        <Avatar className='mb-4  w-28 h-28'>
       <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
       <AvatarFallback>CN</AvatarFallback>
     </Avatar>
@@ -41,7 +41,7 @@ function Profile() {
           </TabsList>
           <TabsContent value='watching'>
             {/* Content for Watching tab */}
-            <div className="mt-10 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 px-10">
+            <div className="mt-10 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 px-10">
             <AnimeCard 
             title='Naruto'
             imageUrl='https://cdn.myanimelist.net/images/anime/13/17405.jpg'

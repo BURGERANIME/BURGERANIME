@@ -50,7 +50,7 @@ export default function Catalog() {
   return (
     <div className="p-10 min-h-screen">
       <div className="flex justify-between mt-32 pb-8">
-        <h1 className="text-2xl text-white">Catalog</h1>
+        <h1 className="font-semibold text-3xl text-white">Catalog</h1>
         <div className="flex items-center space-x-4">
           <span>Sort By</span>
           <select
