@@ -1,4 +1,4 @@
-import { Injectable, BadRequestException, ConflictException, InternalServerErrorException, UnauthorizedException } from '@nestjs/common';
+import { Injectable, ConflictException, InternalServerErrorException, UnauthorizedException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { UserDocument, User } from 'src/models/user.schema';
@@ -11,7 +11,7 @@ export class AccountsService {
 
   // Create a new account
   async createAccount(body: any) {
-    const { email, password, username } = body;
+    const { username, email, password } = body;
 
     // Check if user already exists
     const existingUser = await this.userModel.findOne({ email });
@@ -21,12 +21,21 @@ export class AccountsService {
 
     // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
+    const avatardemo = "https://firebasestorage.googleapis.com/v0/b/burgeranimesally.appspot.com/o/avatars%2Favatar.png?alt=media&token=37a673b4-b442-4c7a-ad81-64d232d334f2";
 
     // Create the new user
     const newUser = new this.userModel({
-      email,
       username,
+      email,
       password: hashedPassword,
+      avatar: avatardemo,
+      role: {
+        admin: false,
+        modrator: false,
+        helper: false,
+        vip: false,
+        demo: true,
+      },
     });
 
     try {
@@ -36,7 +45,7 @@ export class AccountsService {
     }
 
     // Create a JWT token
-    const token = jwt.sign({ userId: newUser._id }, process.env.JWT_SECRET , { expiresIn: '1h' });
+    const token = jwt.sign({ userId: newUser._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
     return { user: newUser, token };
   }
@@ -58,11 +67,8 @@ export class AccountsService {
     }
 
     // Create a JWT token
-    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET , { expiresIn: '1h' });
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
     return { user, token };
   }
-
-
-
 }

@@ -22,9 +22,11 @@ export class User {
   @Prop({ required: true })
   password: string;
 
+  @Prop({ default: 'https://firebasestorage.googleapis.com/v0/b/burgeranimesally.appspot.com/o/avatars%2Favatar.png?alt=media&token=37a673b4-b442-4c7a-ad81-64d232d334f2' })
   avatar: string;
-  role: Role;
 
+  @Prop({ type: Object, default: { admin: false, modrator: false, helper: false, vip: false, demo: true } })
+  role: Role;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
