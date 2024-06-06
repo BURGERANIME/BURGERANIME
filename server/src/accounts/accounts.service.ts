@@ -1,4 +1,4 @@
-import { Injectable, BadRequestException, ConflictException, InternalServerErrorException } from '@nestjs/common';
+import { Injectable, BadRequestException, ConflictException, InternalServerErrorException, UnauthorizedException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { UserDocument, User } from 'src/models/user.schema';
@@ -36,8 +36,33 @@ export class AccountsService {
     }
 
     // Create a JWT token
-    const token = jwt.sign({ userId: newUser._id }, 'burger', { expiresIn: '1h' });
+    const token = jwt.sign({ userId: newUser._id }, process.env.JWT_SECRET , { expiresIn: '1h' });
 
     return { user: newUser, token };
   }
+
+  // SignIn
+  async signinAccount(body: any) {
+    const { email, password } = body;
+
+    // Check if user exists
+    const user = await this.userModel.findOne({ email });
+    if (!user) {
+      throw new UnauthorizedException('Invalid credentials');
+    }
+
+    // Check if password matches
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+    if (!isPasswordValid) {
+      throw new UnauthorizedException('Invalid credentials');
+    }
+
+    // Create a JWT token
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET , { expiresIn: '1h' });
+
+    return { user, token };
+  }
+
+
+
 }

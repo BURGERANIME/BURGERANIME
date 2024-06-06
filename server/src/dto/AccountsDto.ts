@@ -6,3 +6,8 @@ export class CreateAccountDto {
    password: string;
    created_at: Date;
 }
+
+export class SigninAccountDto {
+   email: string;
+   password: string;
+}
