@@ -67,8 +67,16 @@ export class AccountsService {
     }
 
     // Create a JWT token
-    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    const payload = {
+      userId: user._id,
+      username: user.username,
+      email: user.email,
+      avatar: user.avatar,
+      role: user.role,
+    };
+    
+    const token = jwt.sign( payload, process.env.JWT_SECRET, { expiresIn: '1h' });
 
-    return { user, token };
+    return { token };
   }
 }
