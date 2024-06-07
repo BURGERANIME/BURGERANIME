@@ -91,7 +91,7 @@ export class AccountsService {
   async authenticate(token: string) {
     try {
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
-      return decoded;
+      return { decoded , token};
     } catch (error) {
       return new UnauthorizedException('Invalid token').message;
     }
