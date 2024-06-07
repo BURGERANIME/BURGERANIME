@@ -20,7 +20,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         localStorage.removeItem("token");
       }
     }
-  }, []);
+  }, [token , pathname]);
 
   useEffect(() => {
     if (token) {
@@ -32,17 +32,20 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             localStorage.setItem('token', newToken);
           } else {
             localStorage.removeItem("token");
-            router.push('/');
+            //router.push('/');
+            window.location.href = '/';
           }
         })
         .catch(() => {
           localStorage.removeItem("token");
           router.push('/');
+          //window.location.href = '/';
         });
     } else {
-      router.push('/');
+      //router.push('/');
+      //window.location.href = '/';
     }
-  }, [pathname]);
+  }, [pathname , token]);
 
   return (
     <html lang="en">
