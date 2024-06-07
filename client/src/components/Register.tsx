@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import "@/assets/css/Register.css";
 import axios from "axios";
+import { usePathname } from "next/navigation";
 import { jwtDecode } from "jwt-decode";
 
 interface AccunetObject {
@@ -55,7 +56,7 @@ export default function Register() {
             }
            
          }
-      }, [token]);
+      }, [token , usePathname()]);
 
 
    // Register Function

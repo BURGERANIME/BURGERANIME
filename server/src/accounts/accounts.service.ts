@@ -87,15 +87,33 @@ export class AccountsService {
     return { token };
   }
 
-  // Authenticate JWT after signIn
-  async authenticate(token: string) {
-    try {
-      const decoded = jwt.verify(token, process.env.JWT_SECRET);
-      return { decoded , token};
-    } catch (error) {
-      return new UnauthorizedException('Invalid token').message;
+    // Authenticate JWT after signIn
+    async authenticate(token: string) {
+      try {
+        const decoded: any = jwt.verify(token, process.env.JWT_SECRET);
+
+        // Check if email exists in the database
+        const user = await this.userModel.findOne({ email: decoded.email });
+        if (!user) {
+          return new UnauthorizedException('Invalid token');
+        }
+
+        // Create a new token with fresh payload
+        const payload = {
+          userId: user._id,
+          username: user.username,
+          email: user.email,
+          avatar: user.avatar,
+          role: user.role,
+        };
+
+        const newToken = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h' });
+
+        return { decoded, token : newToken };
+      } catch (error) {
+        return new UnauthorizedException('Invalid token');
+      }
     }
-  }
 
 
 }
