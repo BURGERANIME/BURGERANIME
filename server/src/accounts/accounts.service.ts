@@ -16,7 +16,7 @@ export class AccountsService {
     // Check if user already exists
     const existingUser = await this.userModel.findOne({ email });
     if (existingUser) {
-      throw new ConflictException('User already exists');
+      return new ConflictException('User already exists').message;
     }
 
     // Hash the password
@@ -41,13 +41,20 @@ export class AccountsService {
     try {
       await newUser.save();
     } catch (error) {
-      throw new InternalServerErrorException('Failed to create user');
+      return new InternalServerErrorException('Failed to create user').message;
     }
 
+    const payload = {
+      userId: newUser._id,
+      username: newUser.username,
+      email: newUser.email,
+      avatar: newUser.avatar,
+      role: newUser.role,
+    };
     // Create a JWT token
-    const token = jwt.sign({ userId: newUser._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    const token = jwt.sign( payload , process.env.JWT_SECRET, { expiresIn: '1h' });
 
-    return { user: newUser, token };
+    return { token };
   }
 
   // SignIn
@@ -57,13 +64,13 @@ export class AccountsService {
     // Check if user exists
     const user = await this.userModel.findOne({ email });
     if (!user) {
-      throw new UnauthorizedException('Invalid credentials');
+      return new UnauthorizedException('Invalid credentials').message;
     }
 
     // Check if password matches
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) {
-      throw new UnauthorizedException('Invalid credentials');
+      return new UnauthorizedException('Invalid credentials').message;
     }
 
     // Create a JWT token
