@@ -130,11 +130,11 @@ export default function Register() {
                         Profile
                         <span className="uppercase"> 
                            { 
-                              decoded.role.admin == true ? <span className=" badge border-none bg-orange-600 text-black " > Admin </span> :
+                              decoded.role.admin == true ? <span className=" badge border-none bg-orange-600 text-white " > Admin </span> :
                               decoded.role.modrator == true ? <span className=" badge border-none bg-purple-500 text-white ">Modrator</span> :
                               decoded.role.helper == true ? <span className=" badge border-none bg-blue-500 text-white ">Helper</span> :
-                              decoded.role.vip == true ? <span className=" badge border-none bg-green-600 text-black " >VIP</span> :
-                              decoded.role.demo == true ? <span className=" badge border-none bg-yellow-500 text-black ">Demo</span> : <span>Member</span> 
+                              decoded.role.vip == true ? <span className=" badge border-none bg-green-600 text-white " >VIP</span> :
+                              decoded.role.demo == true ? <span className=" badge border-none bg-yellow-400 text-black ">Demo</span> : <span>Member</span> 
                            } </span>
                      </a>
                   </li>

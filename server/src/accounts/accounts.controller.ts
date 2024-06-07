@@ -18,4 +18,10 @@ export class AccountsController {
       return this.AccountsService.signinAccount(body);
     }
 
+    // Authenticate JWT after signIn 
+    @Post('authenticate')
+    async authenticate(@Body() body : {token : string}) {
+      return this.AccountsService.authenticate(body.token);
+    }
+
 }

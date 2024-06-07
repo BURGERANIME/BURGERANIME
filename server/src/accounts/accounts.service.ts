@@ -86,4 +86,16 @@ export class AccountsService {
 
     return { token };
   }
+
+  // Authenticate JWT after signIn
+  async authenticate(token: string) {
+    try {
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      return decoded;
+    } catch (error) {
+      return new UnauthorizedException('Invalid token').message;
+    }
+  }
+
+
 }
