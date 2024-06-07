@@ -1,7 +1,23 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "@/assets/css/Register.css";
 import axios from "axios";
+import { jwtDecode } from "jwt-decode";
+
+interface AccunetObject {
+   userId: string,
+   username: string,
+   email: string,
+   avatar: string,
+   role: {
+      admin: boolean;
+      modrator: boolean;
+      helper: boolean;
+      vip: boolean;
+      demo: boolean;
+   }
+
+}
 
 export default function Register() {
 
@@ -20,6 +36,28 @@ export default function Register() {
    const [signInEmail,setSignInEmail] = useState<string>("");
    const [signInPassword,setSignInPassword] = useState<string>("");
 
+   // Get Token & Decode it
+      const [token, setToken] = useState<string | null>(null);
+      const [decoded, setDecoded] = useState<any | null>(null);
+      
+
+      useEffect(() => {
+         if (typeof window !== 'undefined') {
+            const storedToken = localStorage.getItem('token');
+            if (storedToken != "undefined" && storedToken != "" ) {
+               setToken(storedToken);
+               const decodedToken = storedToken ? jwtDecode<AccunetObject>(storedToken) : {};
+               setDecoded(decodedToken);
+            }
+
+            else {
+               localStorage.removeItem("token");
+            }
+           
+         }
+      }, [token]);
+
+
    // Register Function
    const handleRegister = async (e: any) => {
       e.preventDefault();
@@ -31,6 +69,9 @@ export default function Register() {
          }).then((res : any) => {
             console.log(res.data);
             localStorage.setItem("token", res.data.token);
+            if (typeof window !== 'undefined') {
+               window.location.reload();
+            }
          });
       } catch (error) {
          console.log(error);
@@ -47,29 +88,80 @@ export default function Register() {
          }).then((res : any) => {
             console.log(res.data);
             localStorage.setItem("token", res.data.token);
+
+            if (typeof window !== 'undefined') {
+               window.location.reload();
+            }
+
          });
       } catch (error) {
          console.log(error);
       }
    }
    
-   
+
+
+   // Logout Function
+   const handleLogout = () => {
+      if (typeof window !== 'undefined') {
+        localStorage.removeItem("token");
+        window.location.reload();
+      }
+    };
 
 
   return (
     <>
 
       {/* Buttons in Header  */}
-      <div className="space-x-4 hidden md:block ">
-         <button className="btn w-24 bg-[#333] text-white border-none hover:bg-white hover:text-black" onClick={ () => { setSigninIsOpen(!SigninisOpen); setRejIsOpen(false);} } >Log In</button>
-         <button className="btn bg-orange-500 text-white border-none hover:bg-white hover:text-black" onClick={() => {setRejIsOpen(!RejisOpen); setSigninIsOpen(false);}}>
-            Get started
-         </button>
-      </div>
+      {/* Avatar  */}
+      {
+         token ? 
+            <>
+            <div className=" relative dropdown dropdown-end z-[1000]">
+                  <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                  <div className="w-10 rounded-full">
+                     <img src={`${decoded.avatar}`} alt="😭" />
+                  </div>
+                  </div>
+                  <ul tabIndex={0} className=" relative border-t border-gray-400 mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-[#2222226e] text-white font-extrabold rounded-box w-52">
+                  <li>
+                     <a className="justify-between">
+                        Profile
+                        <span className="uppercase"> 
+                           { 
+                              decoded.role.admin == true ? <span className=" badge border-none bg-orange-600 text-black " > Admin </span> :
+                              decoded.role.modrator == true ? <span className=" badge border-none bg-purple-500 text-white ">Modrator</span> :
+                              decoded.role.helper == true ? <span className=" badge border-none bg-blue-500 text-white ">Helper</span> :
+                              decoded.role.vip == true ? <span className=" badge border-none bg-green-600 text-black " >VIP</span> :
+                              decoded.role.demo == true ? <span className=" badge border-none bg-yellow-500 text-black ">Demo</span> : <span>Member</span> 
+                           } </span>
+                     </a>
+                  </li>
+
+                  <li onClick={handleLogout}><a>Logout</a></li>
+                  </ul>
+              </div>
+            
+            </>
+          : 
+            <>
+
+                  <div className="space-x-4 hidden md:block ">
+                     <button className="btn w-24 bg-[#333] text-white border-none hover:bg-white hover:text-black" onClick={ () => { setSigninIsOpen(!SigninisOpen); setRejIsOpen(false);} } >Log In</button>
+                     <button className="btn bg-orange-500 text-white border-none hover:bg-white hover:text-black" onClick={() => {setRejIsOpen(!RejisOpen); setSigninIsOpen(false);}}>
+                        Get started
+                     </button>
+                  </div>
+
+            </>
+         
+      }
+      
 
 
             {/* Register Card */}
-            <div  id="RejCard" className={`fixed hidden md:block w-[60%] h-[60%] rounded-xl bg-[#000000b2]  transform ${RejisOpen ? 'translate-y-0 mt-[30%]' : '-translate-y-full'} transition-transform duration-300 ease-in-out z-10  `}>
+            <div  id="RejCard" className={`fixed hidden md:block w-[60%] p-5  rounded-xl bg-[#000000b2]  transform ${RejisOpen ? 'translate-y-0 mt-[30%]' : '-translate-y-full'} transition-transform duration-300 ease-in-out z-10  `}>
                         
                         {/* Close Button */}
                         <img src="/assets/icons/cross.png" alt="close_tab" width={50} className=" relative float-right duration-150 mt-[-10px] mr-[-10px] cursor-pointer hover:rotate-[10deg] " onClick={() => setRejIsOpen(!RejisOpen)} />
@@ -115,7 +207,7 @@ export default function Register() {
 
 
 
-         <div  id="RejCard" className={`fixed hidden md:block w-[60%] h-[60%] rounded-xl bg-[#000000b2]  transform ${SigninisOpen ? 'translate-y-0 mt-[30%]' : '-translate-y-full'} transition-transform duration-300 ease-in-out z-10  `}>
+         <div  id="RejCard" className={`fixed hidden md:block w-[60%] p-5 rounded-xl bg-[#000000b2]  transform ${SigninisOpen ? 'translate-y-0 mt-[30%]' : '-translate-y-full'} transition-transform duration-300 ease-in-out z-10  `}>
                         
                         {/* Close Button */}
                         <img src="/assets/icons/cross.png" alt="close_tab" width={50} className=" relative float-right duration-150 mt-[-10px] mr-[-10px] cursor-pointer hover:rotate-[10deg] " onClick={() => setSigninIsOpen(!SigninisOpen)} />
