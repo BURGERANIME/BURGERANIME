@@ -1,0 +1,27 @@
+{
+   "Index": {
+     "title": "مرحبا بكم في موقعنا"
+   },
+   "Header": {
+     "Home": "الصفحة الرئيسية",
+      "About": "عنا",
+      "Contact": "اتصل بنا",
+      "Catalog": "الكتالوج",
+      "Login": "تسجيل الدخول",
+      "Logout": "تسجيل الخروج",
+      "News": "الأخبار",
+      "Profile": "الملف الشخصي",
+      "Register": "تسجيل",
+      "Collection": "مجموعة",
+      "GetStarted": "ابدأ",
+      "Search": "بحث"
+
+   },
+   "DescMainScene": {
+      "Imgtitle_Glassworker": "/assets/images/animes_titles/The_Glassworker_ar.png",
+      "desc": "حياة صانع الزجاج الشاب في التدريب وعلاقاته على مر السنين حيث تمر أرضه بالحرب والصراع.",
+      "btn_learnMore" : "تعرف على المزيد",
+      "btn_watch": "حقظ للمشاهدة"
+    }
+   
+ }

@@ -1,9 +1,14 @@
 "use client";
+import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 
 export default function BurgerMenu() {
+  // Translation
+  const t = useTranslations('Header');
+  
   const [isOpen, setIsOpen] = useState(false);
+
 
   // Use useEffect to add and clean up the event listener
   useEffect(() => {
@@ -63,24 +68,24 @@ export default function BurgerMenu() {
           <div className="block w-full mt-10 m-auto text-center">
             <ul className="space-y-4 w-full text-center">
               <li>
-                <a href="#" className="text-white text-lg font-bold border-b-2 border-b-transparent duration-150 hover:text-orange-500 hover:border-b-white">Home</a>
+                <a href="#" className="text-white text-lg font-bold border-b-2 border-b-transparent duration-150 hover:text-orange-500 hover:border-b-white">{t('Home')}</a>
               </li>
               <li>
-                <a href="#" className="text-white text-lg font-bold border-b-2 border-b-transparent duration-150 hover:text-orange-500 hover:border-b-white">About</a>
+                <a href="#" className="text-white text-lg font-bold border-b-2 border-b-transparent duration-150 hover:text-orange-500 hover:border-b-white">{t('Catalog')}</a>
               </li>
               <li>
-                <a href="#" className="text-white text-lg font-bold border-b-2 border-b-transparent duration-150 hover:text-orange-500 hover:border-b-white">Services</a>
+                <a href="#" className="text-white text-lg font-bold border-b-2 border-b-transparent duration-150 hover:text-orange-500 hover:border-b-white">{t('News')}</a>
               </li>
               <li>
-                <a href="#" className="text-white text-lg font-bold border-b-2 border-b-transparent duration-150 hover:text-orange-500 hover:border-b-white">Contact</a>
+                <a href="#" className="text-white text-lg font-bold border-b-2 border-b-transparent duration-150 hover:text-orange-500 hover:border-b-white">{t('Collection')}</a>
               </li>
             </ul>
           </div>
 
           <div className="mt-10 space-y-4 m-auto text-center">
-            <button className="btn w-24 bg-[#fff] text-black border-none hover:bg-white hover:text-black">Log In</button> <br />
+            <button className="btn  bg-[#fff] text-black border-none hover:bg-white hover:text-black">{t('Login')}</button> <br />
             <button className="btn bg-orange-500 text-white border-none hover:bg-white hover:text-black">
-              Get started
+            {t('GetStarted')}
             </button>
           </div>
         </div>

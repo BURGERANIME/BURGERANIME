@@ -1,0 +1,26 @@
+{
+   "Index": {
+     "title": "Hello world!"
+   },
+   "Header": {
+    "Home": "Home",
+    "About": "About",
+    "Contact": "Contact Us",
+    "Catalog": "Catalog",
+    "Login": "Login",
+    "Logout": "Logout",
+    "News": "News",
+    "Profile": "Profile",
+    "Register": "Register",
+    "Collection": "Collection",
+    "GetStarted": "Get Started",
+    "Search": "Search"
+  },
+  "DescMainScene": {
+      "Imgtitle_Glassworker": "/assets/images/animes_titles/The_Glassworker.png",
+      "desc": "The life of a young glassblower in training and his relationships over the years, as his land goes through war and strife.",
+      "btn_learnMore": "Learn More",
+      "btn_watch": "To Watch"
+    }
+   
+ }

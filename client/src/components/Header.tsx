@@ -1,10 +1,14 @@
 "use client"
+import {useTranslations} from 'next-intl';
 import BurgerMenu from "./BurgerMenu";
 import Link from "next/link";
 import Register from "./Register";
 import { useEffect, useState } from "react";
 
 export default function Header() {
+   // 
+   const t = useTranslations('Header');
+   // 
    const [isScrolled, setIsScrolled] = useState(false);
 
    const handleScroll = () => {
@@ -19,7 +23,7 @@ export default function Header() {
      };
    }, []);
 return (
-   <header className={`fixed flex w-full h-24 items-center justify-around z-50 transition-colors duration-300 ${isScrolled ? ' bg-[#222]' :  'bg-transparent' }`}>
+   <header className={`fixed flex w-full h-24 items-center justify-around z-50 transition-colors duration-300 ${isScrolled ? ' bg-[#222]' :  'bg-[#22222252]' }`}>
       <div className="flex items-center space-x-10"> 
          <figure className="flex space-x-4 items-center">
             <BurgerMenu />
@@ -51,10 +55,10 @@ return (
          }
 
          <ul className=" hidden md:flex space-x-4 text-lg text-[#ffffff8c]   ">
-            <li className="text-white font-bold cursor-pointer  duration-300"><Link href="/">Home</Link></li>
-            <li className=" hover:text-white hover:font-bold cursor-pointer duration-150 "><Link href="/catalog">Catalog</Link></li>
-            <li className=" hover:text-white hover:font-bold cursor-pointer duration-150 "><Link href="/news">News</Link></li>
-            <li className=" hover:text-white hover:font-bold cursor-pointer duration-150 "><Link href="/collection">Collection</Link></li>
+            <li className="text-white font-bold cursor-pointer  duration-300"><Link href="/">{t('Home')}</Link></li>
+            <li className=" hover:text-white hover:font-bold cursor-pointer duration-150 "><Link href="/catalog">{t('Catalog')}</Link></li>
+            <li className=" hover:text-white hover:font-bold cursor-pointer duration-150 "><Link href="/news">{t('News')}</Link></li>
+            <li className=" hover:text-white hover:font-bold cursor-pointer duration-150 "><Link href="/collection">{t('Collection')}</Link></li>
          </ul>
       
       </div>
@@ -90,7 +94,7 @@ return (
             <input
                type="text"
                className="grow placeholder-white outline-none"
-               placeholder="Search"
+               placeholder={t('Search')}
             />
          </label>
       </div>

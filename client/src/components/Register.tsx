@@ -1,4 +1,5 @@
 "use client";
+import {useTranslations} from 'next-intl';
 import { useEffect, useState } from "react";
 import "@/assets/css/Register.css";
 import axios from "axios";
@@ -21,6 +22,8 @@ interface AccunetObject {
 }
 
 export default function Register() {
+   // Translation
+   const t = useTranslations('Header');
 
    // Server URL 
    const server = process.env.NEXT_PUBLIC_SERVER_URL;
@@ -149,9 +152,9 @@ export default function Register() {
             <>
 
                   <div className="space-x-4 hidden md:block ">
-                     <button className="btn w-24 bg-[#333] text-white border-none hover:bg-white hover:text-black" onClick={ () => { setSigninIsOpen(!SigninisOpen); setRejIsOpen(false);} } >Log In</button>
+                     <button className="btn bg-[#333] text-white border-none hover:bg-white hover:text-black" onClick={ () => { setSigninIsOpen(!SigninisOpen); setRejIsOpen(false);} } >{t("Login")}</button>
                      <button className="btn bg-orange-500 text-white border-none hover:bg-white hover:text-black" onClick={() => {setRejIsOpen(!RejisOpen); setSigninIsOpen(false);}}>
-                        Get started
+                        {t('GetStarted')}
                      </button>
                   </div>
 
