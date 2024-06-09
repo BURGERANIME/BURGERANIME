@@ -2,11 +2,13 @@
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 
 export default function BurgerMenu() {
   // Translation
   const t = useTranslations('Header');
+  const pathname = usePathname();
   
   const [isOpen, setIsOpen] = useState(false);
 
@@ -69,16 +71,16 @@ export default function BurgerMenu() {
           <div className="block w-full mt-10 m-auto text-center">
             <ul className="space-y-4 w-full text-center">
               <li>
-                <Link href="/" className="text-white text-lg font-bold border-b-2 border-b-transparent duration-150 hover:text-orange-500 ">{t('Home')}</Link>
+                <Link href={`/${pathname.startsWith('/en') ? 'en' : 'ar'}`} className="text-white text-lg font-bold border-b-2 border-b-transparent duration-150 hover:text-orange-500 ">{t('Home')}</Link>
               </li>
               <li>
-                <Link href="/catalog" className="text-white text-lg font-bold border-b-2 border-b-transparent duration-150 hover:text-orange-500 ">{t('Catalog')}</Link>
+                <Link href={`/${pathname.startsWith('/en') ? 'en' : 'ar'}/catalog`} className="text-white text-lg font-bold border-b-2 border-b-transparent duration-150 hover:text-orange-500 ">{t('Catalog')}</Link>
               </li>
               <li>
-                <Link href="/news" className="text-white text-lg font-bold border-b-2 border-b-transparent duration-150 hover:text-orange-500 ">{t('News')}</Link>
+                <Link href={`/${pathname.startsWith('/en') ? 'en' : 'ar'}/news`} className="text-white text-lg font-bold border-b-2 border-b-transparent duration-150 hover:text-orange-500 ">{t('News')}</Link>
               </li>
               <li>
-                <Link href="/collection" className="text-white text-lg font-bold border-b-2 border-b-transparent duration-150 hover:text-orange-500 ">{t('Collection')}</Link>
+                <Link href={`/${pathname.startsWith('/en') ? 'en' : 'ar'}/collection`} className="text-white text-lg font-bold border-b-2 border-b-transparent duration-150 hover:text-orange-500 ">{t('Collection')}</Link>
               </li>
             </ul>
           </div>

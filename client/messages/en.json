@@ -28,6 +28,11 @@
       "desc": "The life of a young glassblower in training and his relationships over the years, as his land goes through war and strife.",
       "btn_learnMore": "Learn More",
       "btn_watch": "To Watch"
+    },
+    "NotFound": {
+      "title": "404",
+      "desc": "404 !! Page Not Found",
+      "btn_home": "Go to Home"
     }
    
  }
