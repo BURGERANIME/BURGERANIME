@@ -4,10 +4,18 @@ import BurgerMenu from "./BurgerMenu";
 import Link from "next/link";
 import Register from "./Register";
 import { useEffect, useState } from "react";
+import { usePathname } from 'next/navigation';
 
 export default function Header() {
    // 
    const t = useTranslations('Header');
+   const pathname = usePathname();
+   
+
+   const handleChangeLanguage = (locale: string) => {
+      const newPath = locale === 'en' ? '/en' : '/ar'; // Adjust routes as per your setup
+      window.location.href = newPath;
+    };
    // 
    const [isScrolled, setIsScrolled] = useState(false);
 
@@ -98,6 +106,27 @@ return (
             />
          </label>
       </div>
+       {/* Select Language */}
+       <div className="dropdown dropdown-hover flex items-center">
+         <div tabIndex={0} role="button" className="m-1 flex items-center ">
+            
+            <div tabIndex={0} role="button" className="m-1 flex items-center">
+               {pathname.startsWith('/en') ? (
+                  <img src="/assets/icons/uk.svg" width={20} />
+               ) : pathname.startsWith('/ar') ? (
+                  <img src="/assets/icons/tn.svg" width={20} />
+               ) : (
+                  <img src="/assets/icons/flag.svg" width={20} />
+               )}
+            </div>
+
+         </div>
+         <ul tabIndex={0} className="flex items-center dropdown-content z-[1] menu p-2 shadow bg-[#222] rounded-box w-16 ">
+            <li onClick={() => handleChangeLanguage('en')}><img src='/assets/icons/uk.svg' width={50} /></li>
+            <li onClick={() => handleChangeLanguage('ar')}><img src='/assets/icons/tn.svg' width={50} /></li>
+         </ul>
+      </div>
+      {/* Avatar */}
       <Register />
    </header>
 );
