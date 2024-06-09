@@ -1,9 +1,18 @@
-'use client';
-import { useTranslations } from 'next-intl';
+"use client";
 import Image from "next/image";
-
+import { usePathname } from "next/navigation";
 export default function NotFound() {
-  const t = useTranslations('NotFound');
+
+  const pathname = usePathname();
+
+  setTimeout(() => {  
+    
+    if (pathname !== "/") {
+      window.location.href = "/";
+    }
+    
+  }, 1000);
+  
   return (
     <>
             <div className=" select-none relative p-28  ">
@@ -18,9 +27,9 @@ export default function NotFound() {
                         className=" m-auto "
                     />
                     <p 
-                        className="mt-[-4.3em] text-[#222] w-32 m-auto font-bold relative z-10"
+                        className="mt-[-5em] text-[#222] w-32 m-auto font-bold relative z-10"
                     >
-                         <span className="text-blue-500 font-bold "> {t('desc')} </span>  
+                         <span className="text-blue-500 font-bold "> Page not found. Wait, you will be redirected . . .</span>  
                     </p>
                   </figure>
          
