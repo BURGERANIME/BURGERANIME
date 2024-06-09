@@ -30,6 +30,14 @@ export default function Header() {
        window.removeEventListener('scroll', handleScroll);
      };
    }, []);
+  
+  // getLinkClasses function
+   const getLinkClasses = (linkPath: string) => {
+      const isActive = pathname === linkPath || pathname.startsWith(`${linkPath}/`);
+      return isActive ? 'text-white font-bold' : 'hover:text-white hover:font-bold';
+    };
+
+
 return (
    <header className={`fixed flex w-full h-24 items-center justify-around z-50 transition-colors duration-300 ${isScrolled ? ' bg-[#222]' :  'bg-[#22222252]' }`}>
       <div className="flex items-center space-x-10"> 
@@ -62,19 +70,23 @@ return (
             */
          }
 
-            <ul className="hidden md:flex space-x-4 text-lg text-[#ffffff8c]   ">
-               <li className="text-white font-bold cursor-pointer duration-300">
-                  <Link href={`/${pathname.startsWith('/en') ? 'en' : 'ar'}`}>{t('Home')}</Link>
-               </li>
-               <li className=" hover:text-white hover:font-bold cursor-pointer duration-150 ">
-                  <Link href={`/${pathname.startsWith('/en') ? 'en' : 'ar'}/catalog`}>{t('Catalog')}</Link>
-               </li>
-               <li className=" hover:text-white hover:font-bold cursor-pointer duration-150 ">
-                  <Link href={`/${pathname.startsWith('/en') ? 'en' : 'ar'}/news`}>{t('News')}</Link>
-               </li>
-               <li className=" hover:text-white hover:font-bold cursor-pointer duration-150 ">
-                  <Link href={`/${pathname.startsWith('/en') ? 'en' : 'ar'}/collection`}>{t('Collection')}</Link>
-               </li>
+            <ul className="hidden md:flex space-x-4 text-lg text-[#ffffff8c]">
+                     
+
+                     <li className={`cursor-pointer duration-300 ${pathname === '/ar' || pathname === '/en' ? 'text-white font-bold' : ''}`}>
+                           <Link href={`/${pathname.startsWith('/en') ? 'en' : 'ar'}`}>{t('Home')}</Link>
+                     </li>
+
+
+                     <li className={`cursor-pointer duration-150 ${getLinkClasses(`/${pathname.startsWith('/en') ? 'en' : 'ar'}/catalog`)}`}>
+                     <Link href={`/${pathname.startsWith('/en') ? 'en' : 'ar'}/catalog`}>{t('Catalog')}</Link>
+                     </li>
+                     <li className={`cursor-pointer duration-150 ${getLinkClasses(`/${pathname.startsWith('/en') ? 'en' : 'ar'}/news`)}`}>
+                     <Link href={`/${pathname.startsWith('/en') ? 'en' : 'ar'}/news`}>{t('News')}</Link>
+                     </li>
+                     <li className={`cursor-pointer duration-150 ${getLinkClasses(`/${pathname.startsWith('/en') ? 'en' : 'ar'}/collection`)}`}>
+                     <Link href={`/${pathname.startsWith('/en') ? 'en' : 'ar'}/collection`}>{t('Collection')}</Link>
+                     </li>
             </ul>
       
       </div>
