@@ -5,6 +5,7 @@ import "@/assets/css/Register.css";
 import axios from "axios";
 import { usePathname } from "next/navigation";
 import { jwtDecode } from "jwt-decode";
+import Link from 'next/link';
 
 interface AccunetObject {
    userId: string,
@@ -25,6 +26,7 @@ export default function Register() {
    // Translation
    const t = useTranslations('Header');
    const p = useTranslations('AvatarRole');
+   const pathname = usePathname();
 
    // Server URL 
    const server = process.env.NEXT_PUBLIC_SERVER_URL;
@@ -131,7 +133,7 @@ export default function Register() {
                   </div>
                   <ul tabIndex={0} className=" relative border-t border-gray-400 mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-[#2222226e] text-white font-extrabold rounded-box w-52">
                   <li>
-                     <a className="justify-between">
+                     <Link href={`/${pathname.startsWith('/en') ? 'en' : 'ar'}/profile/${ decoded ?  decoded.userId : ""}`} className="justify-between">
                         {t('Profile')}
                         <span className="uppercase"> 
                            { 
@@ -141,7 +143,7 @@ export default function Register() {
                               decoded.role.vip == true ? <span className=" badge border-none bg-green-600 text-white " >VIP</span> :
                               decoded.role.demo == true ? <span className=" badge border-none bg-yellow-400 text-black ">{p('Demo')}</span> : <span>Member</span> 
                            } </span>
-                     </a>
+                     </Link>
                   </li>
 
                   <li onClick={handleLogout}> <a>  {t('Logout')}  </a></li>
