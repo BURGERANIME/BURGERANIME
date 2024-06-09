@@ -127,7 +127,7 @@ return (
          </label>
       </div>
        {/* Select Language */}
-       <div className="dropdown dropdown-hover flex items-center">
+       <div className=" relative z-[1000] dropdown dropdown-hover flex items-center">
          <div tabIndex={0} role="button" className="m-1 flex items-center ">
             
             <div tabIndex={0} role="button" className="m-1 flex items-center">
