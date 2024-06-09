@@ -1,6 +1,7 @@
 "use client";
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useState, useEffect } from 'react';
 
 export default function BurgerMenu() {
@@ -68,16 +69,16 @@ export default function BurgerMenu() {
           <div className="block w-full mt-10 m-auto text-center">
             <ul className="space-y-4 w-full text-center">
               <li>
-                <a href="#" className="text-white text-lg font-bold border-b-2 border-b-transparent duration-150 hover:text-orange-500 hover:border-b-white">{t('Home')}</a>
+                <Link href="/" className="text-white text-lg font-bold border-b-2 border-b-transparent duration-150 hover:text-orange-500 ">{t('Home')}</Link>
               </li>
               <li>
-                <a href="#" className="text-white text-lg font-bold border-b-2 border-b-transparent duration-150 hover:text-orange-500 hover:border-b-white">{t('Catalog')}</a>
+                <Link href="/catalog" className="text-white text-lg font-bold border-b-2 border-b-transparent duration-150 hover:text-orange-500 ">{t('Catalog')}</Link>
               </li>
               <li>
-                <a href="#" className="text-white text-lg font-bold border-b-2 border-b-transparent duration-150 hover:text-orange-500 hover:border-b-white">{t('News')}</a>
+                <Link href="/news" className="text-white text-lg font-bold border-b-2 border-b-transparent duration-150 hover:text-orange-500 ">{t('News')}</Link>
               </li>
               <li>
-                <a href="#" className="text-white text-lg font-bold border-b-2 border-b-transparent duration-150 hover:text-orange-500 hover:border-b-white">{t('Collection')}</a>
+                <Link href="/collection" className="text-white text-lg font-bold border-b-2 border-b-transparent duration-150 hover:text-orange-500 ">{t('Collection')}</Link>
               </li>
             </ul>
           </div>

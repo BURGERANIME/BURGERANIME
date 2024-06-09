@@ -16,6 +16,13 @@
     "GetStarted": "Get Started",
     "Search": "Search"
   },
+  "AvatarRole": {
+      "Admin": "Admin",
+      "Moderator": "Moderator",
+      "Helper": "Helper",
+      "VIP": "VIP",
+      "Demo": "Demo"
+   },
   "DescMainScene": {
       "Imgtitle_Glassworker": "/assets/images/animes_titles/The_Glassworker.png",
       "desc": "The life of a young glassblower in training and his relationships over the years, as his land goes through war and strife.",

@@ -62,12 +62,20 @@ return (
             */
          }
 
-         <ul className=" hidden md:flex space-x-4 text-lg text-[#ffffff8c]   ">
-            <li className="text-white font-bold cursor-pointer  duration-300"><Link href="/">{t('Home')}</Link></li>
-            <li className=" hover:text-white hover:font-bold cursor-pointer duration-150 "><Link href="/catalog">{t('Catalog')}</Link></li>
-            <li className=" hover:text-white hover:font-bold cursor-pointer duration-150 "><Link href="/news">{t('News')}</Link></li>
-            <li className=" hover:text-white hover:font-bold cursor-pointer duration-150 "><Link href="/collection">{t('Collection')}</Link></li>
-         </ul>
+            <ul className="hidden md:flex space-x-4 text-lg text-[#ffffff8c]   ">
+               <li className="text-white font-bold cursor-pointer duration-300">
+                  <Link href={`/${pathname.startsWith('/en') ? 'en' : 'ar'}`}>{t('Home')}</Link>
+               </li>
+               <li className=" hover:text-white hover:font-bold cursor-pointer duration-150 ">
+                  <Link href={`/${pathname.startsWith('/en') ? 'en' : 'ar'}/catalog`}>{t('Catalog')}</Link>
+               </li>
+               <li className=" hover:text-white hover:font-bold cursor-pointer duration-150 ">
+                  <Link href={`/${pathname.startsWith('/en') ? 'en' : 'ar'}/news`}>{t('News')}</Link>
+               </li>
+               <li className=" hover:text-white hover:font-bold cursor-pointer duration-150 ">
+                  <Link href={`/${pathname.startsWith('/en') ? 'en' : 'ar'}/collection`}>{t('Collection')}</Link>
+               </li>
+            </ul>
       
       </div>
       

@@ -10,12 +10,19 @@
       "Login": "تسجيل الدخول",
       "Logout": "تسجيل الخروج",
       "News": "الأخبار",
-      "Profile": "الملف الشخصي",
+      "Profile": "بروفايلي",
       "Register": "تسجيل",
       "Collection": "مجموعة",
       "GetStarted": "ابدأ",
       "Search": "بحث"
 
+   },
+   "AvatarRole": {
+      "Admin": "مدير",
+      "Moderator": "مشرف",
+      "Helper": "مساعد",
+      "VIP": "VIP",
+      "Demo": "مستخدم"
    },
    "DescMainScene": {
       "Imgtitle_Glassworker": "/assets/images/animes_titles/The_Glassworker_ar.png",

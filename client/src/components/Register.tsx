@@ -24,6 +24,7 @@ interface AccunetObject {
 export default function Register() {
    // Translation
    const t = useTranslations('Header');
+   const p = useTranslations('AvatarRole');
 
    // Server URL 
    const server = process.env.NEXT_PUBLIC_SERVER_URL;
@@ -131,19 +132,19 @@ export default function Register() {
                   <ul tabIndex={0} className=" relative border-t border-gray-400 mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-[#2222226e] text-white font-extrabold rounded-box w-52">
                   <li>
                      <a className="justify-between">
-                        Profile
+                        {t('Profile')}
                         <span className="uppercase"> 
                            { 
-                              decoded.role.admin == true ? <span className=" badge border-none bg-orange-600 text-white " > Admin </span> :
-                              decoded.role.modrator == true ? <span className=" badge border-none bg-purple-500 text-white ">Modrator</span> :
-                              decoded.role.helper == true ? <span className=" badge border-none bg-blue-500 text-white ">Helper</span> :
+                              decoded.role.admin == true ? <span className=" badge border-none bg-orange-600 text-white " > {p('Admin')} </span> :
+                              decoded.role.modrator == true ? <span className=" badge border-none bg-purple-500 text-white ">{p('Moderator')}</span> :
+                              decoded.role.helper == true ? <span className=" badge border-none bg-blue-500 text-white ">{p('Helper')}</span> :
                               decoded.role.vip == true ? <span className=" badge border-none bg-green-600 text-white " >VIP</span> :
-                              decoded.role.demo == true ? <span className=" badge border-none bg-yellow-400 text-black ">Demo</span> : <span>Member</span> 
+                              decoded.role.demo == true ? <span className=" badge border-none bg-yellow-400 text-black ">{p('Demo')}</span> : <span>Member</span> 
                            } </span>
                      </a>
                   </li>
 
-                  <li onClick={handleLogout}><a>Logout</a></li>
+                  <li onClick={handleLogout}> <a>  {t('Logout')}  </a></li>
                   </ul>
               </div>
             
