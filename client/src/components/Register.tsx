@@ -175,7 +175,7 @@ export default function Register() {
                         {/* LOGOS TAB */}
                            <div className=" w-full block m-auto text-center">
                               <img src="/assets/logos/ba_logo.png" alt="BURGERANIME_LOGO" draggable={false} className="m-auto" />
-                              <img src="/assets/logos/register_logo.png" alt="BURGERANIME_LOGO" width={200} draggable={false} className="m-auto" />
+                              <img src={t('ImgRegister')} alt="BURGERANIME_LOGO" width={150} draggable={false} className="m-auto" />
                            </div>
 
                            <div>
@@ -195,12 +195,12 @@ export default function Register() {
                                        </label>
                                  
                                    <div className="mt-3 text-center">
-                                    <button className="btn block w-96 m-auto  bg-orange-500 text-white border-none hover:bg-white hover:text-black">Sign Up</button>
+                                    <button className="btn block w-96 m-auto  bg-orange-500 text-white border-none hover:bg-white hover:text-black">{t("Register")}</button>
                                     <p className="text-white font-mono text-sm mt-2 xl:mt-3">Are you already registered? <span className="font-bold text-white cursor-pointer duration-100 hover:text-orange-200" onClick={() => {
                                         setSigninIsOpen(!SigninisOpen)
                                         setRejIsOpen(!RejisOpen)
                                         
-                                    }}>Sign in</span></p>
+                                    }}> {t("Login")} </span></p>
                                    </div>
                               </form>
                            </div>
@@ -221,7 +221,7 @@ export default function Register() {
                         {/* LOGOS TAB */}
                            <div className=" w-full block m-auto text-center">
                               <img src="/assets/logos/ba_logo.png" alt="BURGERANIME_LOGO" draggable={false} className="m-auto" />
-                              <img src="/assets/logos/welcome_logo.png" alt="BURGERANIME_LOGO" width={200} draggable={false} className="m-auto" />
+                              <img src={t('ImgLogin')} alt="BURGERANIME_LOGO" width={150} draggable={false} className="m-auto" />
                            </div>
 
                            <div>
@@ -238,11 +238,11 @@ export default function Register() {
                                        </label>
                                  
                                    <div className="mt-3 text-center">
-                                    <button className="btn block w-96 m-auto  bg-orange-500 text-white border-none hover:bg-white hover:text-black">Sign In</button>
+                                    <button className="btn block w-96 m-auto  bg-orange-500 text-white border-none hover:bg-white hover:text-black">{t("Login")}</button>
                                     <p className="text-white font-mono text-sm mt-3 xl:mt-3">Don't have an account? <span className="font-bold text-white cursor-pointer duration-100 hover:text-orange-200" onClick={() => {
                                        setRejIsOpen(!RejisOpen)
                                        setSigninIsOpen(!setSigninIsOpen)
-                                    }} >Sign Up</span></p>
+                                    }} > {t("Register")} </span></p>
                                    </div>
                               </form>
                            </div>

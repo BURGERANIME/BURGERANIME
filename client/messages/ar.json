@@ -14,7 +14,9 @@
       "Register": "تسجيل",
       "Collection": "مجموعة",
       "GetStarted": "ابدأ",
-      "Search": "بحث"
+      "Search": "بحث",
+      "ImgLogin" : "/assets/logos/welcome_logo_ar.png",
+      "ImgRegister" : "/assets/logos/register_logo_ar.png"
 
    },
    "AvatarRole": {

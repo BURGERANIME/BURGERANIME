@@ -14,7 +14,9 @@
     "Register": "Register",
     "Collection": "Collection",
     "GetStarted": "Get Started",
-    "Search": "Search"
+    "Search": "Search",
+    "ImgLogin" : "/assets/logos/welcome_logo.png",
+    "ImgRegister" : "/assets/logos/register_logo.png"
   },
   "AvatarRole": {
       "Admin": "Admin",
