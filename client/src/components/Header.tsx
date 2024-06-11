@@ -74,7 +74,7 @@ return (
                      
 
                      <li className={`cursor-pointer duration-300 ${pathname === '/ar' || pathname === '/en' ? 'text-white font-bold' : ''}`}>
-                           <Link href={`/${pathname.startsWith('/en') ? 'en' : 'ar'}`}>{t('Home')}</Link>
+                           <Link href={`/${pathname.startsWith('/en') ? 'en' : 'ar'}`} className=' duration-150 hover:text-white ' >{t('Home')}</Link>
                      </li>
 
 
