@@ -1,3 +1,4 @@
+// lastupdate 14 Jun 24
 "use client"
 import {useTranslations} from 'next-intl';
 import BurgerMenu from "./BurgerMenu";
@@ -7,30 +8,30 @@ import { useEffect, useState } from "react";
 import { usePathname } from 'next/navigation';
 
 export default function Header() {
-   // 
+   //
    const t = useTranslations('Header');
    const pathname = usePathname();
-   
+
 
    const handleChangeLanguage = (locale: string) => {
       const newPath = locale === 'en' ? '/en' : '/ar'; // Adjust routes as per your setup
       window.location.href = newPath;
     };
-   // 
+   //
    const [isScrolled, setIsScrolled] = useState(false);
 
    const handleScroll = () => {
      const scrollTop = document.documentElement.scrollTop;
      setIsScrolled(scrollTop > 0);
    };
- 
+
    useEffect(() => {
      window.addEventListener('scroll', handleScroll);
      return () => {
        window.removeEventListener('scroll', handleScroll);
      };
    }, []);
-  
+
   // getLinkClasses function
    const getLinkClasses = (linkPath: string) => {
       const isActive = pathname === linkPath || pathname.startsWith(`${linkPath}/`);
@@ -40,11 +41,11 @@ export default function Header() {
 
 return (
    <header className={`fixed flex w-full h-24 items-center justify-around z-50 transition-colors duration-300 ${isScrolled ? ' bg-[#222]' :  'bg-[#22222252]' }`}>
-      <div className="flex items-center space-x-10"> 
+      <div className="flex items-center space-x-10">
          <figure className="flex space-x-4 items-center">
             <BurgerMenu />
             {
-               /* 
+               /*
                <Image
                src="/assets/logos/logo.png"
                alt="logo"
@@ -54,9 +55,9 @@ return (
             />
             */
             }
-           
+
          </figure>
-         
+
          {
             // Mobile menu
             /*
@@ -71,7 +72,7 @@ return (
          }
 
             <ul className="hidden md:flex space-x-4 text-lg text-[#ffffff8c]">
-                     
+
 
                      <li className={`cursor-pointer duration-300 ${pathname === '/ar' || pathname === '/en' ? 'text-white font-bold' : ''}`}>
                            <Link href={`/${pathname.startsWith('/en') ? 'en' : 'ar'}`} className=' duration-150 hover:text-white ' >{t('Home')}</Link>
@@ -88,16 +89,16 @@ return (
                      <Link href={`/${pathname.startsWith('/en') ? 'en' : 'ar'}/collection`}>{t('Collection')}</Link>
                      </li>
             </ul>
-      
+
       </div>
-      
+
       <div>
          <label>
          <svg
                xmlns="http://www.w3.org/2000/svg"
                viewBox="0 0 16 16"
                fill="currentColor"
-               className="w-16 h-16 opacity-70 text-white md:hidden btn bg-black  " 
+               className="w-16 h-16 opacity-70 text-white md:hidden btn bg-black  "
             >
                <path
                   fillRule="evenodd"
@@ -129,7 +130,7 @@ return (
        {/* Select Language */}
        <div className=" relative z-[1000] dropdown dropdown-hover flex items-center">
          <div tabIndex={0} role="button" className="m-1 flex items-center ">
-            
+
             <div tabIndex={0} role="button" className="m-1 flex items-center">
                {pathname.startsWith('/en') ? (
                   <img src="/assets/icons/uk.svg" width={20} />
